@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Ardya Pratiwi</title>
-    <!-- Font Cursive untuk judul & Font Nunito untuk teks -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome untuk Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -139,7 +137,7 @@
         /* --- KARTU PROJECT GALLERY --- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -209,7 +207,7 @@
         @media (max-width: 900px) {
             .hero-section { flex-direction: column; }
             .hero-left, .hero-right { flex: 1; padding: 40px 20px; }
-            .card-grid { grid-template-columns: 1fr; }
+            .card-grid, .project-grid { grid-template-columns: 1fr; }
         }
         /* --- TOMBOL VIDEO LINK --- */
         .video-link-btn {
@@ -239,7 +237,6 @@
          ================================================== -->
     <section class="hero-section">
         
-        <!-- Sisi Kiri (Ungu Gelap + Frame HP OUT OF BOUNDS) -->
         <div class="hero-left">
             <h1 class="cursive-text" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About Ardya</h1>
             
@@ -254,7 +251,6 @@
                 </div>
                 
                 <div class="image-clipper">
-                    <!-- GANTI DENGAN NAMA FILE PNG TRANSPARAN ANDA -->
                     <img src="foto_ar_formal-removebg-preview.png" alt="Ardya Pratiwi" class="pop-out-image">
                 </div>
             </div>
@@ -412,7 +408,6 @@
                         <li>Mengelola data dan pelaporan finansial menggunakan Microsoft Excel.</li>
                     </ul>
                     <div class="card-photos">
-                    <!-- Hanya ada SATU div photo-box di sini -->
                     <div class="photo-box" style="grid-column: 1 / -1; aspect-ratio: 8 / 3;">
                         <img src="gas.png" alt="Administrasi">
                         <div class="photo-caption">Pencatatan Keuangan (Ms. Excel)</div>
@@ -437,11 +432,9 @@
                         <li>Strengthened leadership, communication, teamwork, and problem-solving skills.</li>
                     </ul>
                     
-                    <!-- TAMBAHAN BARU: FOTO DOKUMEN SERTIFIKAT ISTIGHOTSAH -->
                     <h4 style="font-size: 1rem; color: #FDF2F8; border-top: 1px dashed rgba(255,255,255,0.3); padding-top: 15px; margin-top: 20px;">Dokumentasi Kegiatan:</h4>
                     <div class="card-photos" style="grid-template-columns: 1fr;">
                         <div class="photo-box" style="height: auto; aspect-ratio: 16 / 9;">
-                            <!-- Ganti ketua.png dengan nama file foto sertifikat Istighotsah Anda -->
                             <img src="istighotsah.jpg" alt="Sertifikat Istighotsah">
                             <div class="https://drive.google.com/file/d/1r5S3HHO3foupLCpgzssWgP9_vxXmtp-7/view?usp=sharing">Sertifikat Koordinator Divisi</div>
                         </div>
@@ -457,19 +450,15 @@
             <div class="project-grid">
                 
                 <!-- Project 10: Motion Graphic -->
-                <!-- Tambahan style flex untuk menyamakan tinggi semua kartu -->
                 <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
-                    <!-- GANTI TANDA # DI DALAM href="" DENGAN LINK PROJECT ANDA -->
                     <a href="#" target="_blank" style="display: block;">
                         <img src="ss motion.png" alt="Motion Graphic" class="project-img">
                     </a>
                     <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
                         <h4>Motion Graphic Video</h4>
-                        <!-- flex-grow: 1 membuat teks mengisi ruang kosong agar bagian tag selalu sejajar di bawah -->
                         <p style="flex-grow: 1;">Membuat video motion graphic yang dinamis dan visual efek menarik menggunakan <b>Adobe After Effects</b>.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="project-tag">After Effects</span>
-                            <!-- GANTI TANDA # DI DALAM href="" DENGAN LINK PROJECT ANDA -->
                             <a href="https://drive.google.com/file/d/1yQfcHyByYAf2QEDnD1-bhyUJQy3AdWie/view?usp=sharing" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">
                                 Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
                             </a>
@@ -479,13 +468,12 @@
 
                 <!-- Project: Website Teman Bicara -->
                 <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
-                    <!-- Ganti tanda # dengan link project/github Teman Bicara Anda -->
                     <a href="#" target="_blank" style="display: block;">
                         <img src="psikolog.png" alt="Website Teman Bicara" class="project-img">
                     </a>
                     <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
                         <h4>Platform Konsultasi "Teman Bicara"</h4>
-                        <p style="flex-grow: 1;">Mengembangkan antarmuka (*Front-End*) *website* layanan kesehatan mental. Dilengkapi fitur DOM manipulasi interaktif menggunakan **JavaScript** untuk menampilkan edukasi psikologis berdasarkan *mood* pengguna.</p>
+                        <p style="flex-grow: 1;">Mengembangkan antarmuka (<i>Front-End</i>) <i>website</i> layanan kesehatan mental. Dilengkapi fitur DOM manipulasi interaktif menggunakan <b>JavaScript</b> untuk menampilkan edukasi psikologis berdasarkan <i>mood</i> pengguna.</p>
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                             <span class="project-tag">Front-End Web</span>
                             <a href="https://ardyaa.github.io/website-psikolog/" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -495,9 +483,7 @@
 
                 <!-- Project: Website Teknik Komputer -->
                 <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
-                    <!-- Ganti tanda # dengan link GitHub / link live website Tekkom ini -->
                     <a href="#" target="_blank" style="display: block;">
-                        <!-- Siapkan screenshot website Teknik Komputer dan ganti nama filenya di sini -->
                         <img src="web tekkom.png" alt="Website Teknik Komputer" class="project-img">
                     </a>
                     <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -745,7 +731,6 @@
                     <h4>Jan 2025 - Apr 2025</h4>
                     <p>Berkontribusi menjangkau 22.000+ penerima manfaat dan mendukung 83% target donasi melalui aksi turun lapangan.</p>
                     
-                    <!-- Diubah menjadi 1fr 1fr agar membagi jadi 2 foto bersebelahan -->
                     <div class="card-photos" style="grid-template-columns: 1fr 1fr; gap: 10px;">
                         
                         <!-- FOTO 1 -->
@@ -756,7 +741,6 @@
 
                         <!-- FOTO 2 -->
                         <div class="photo-box">
-                            <!-- Masukkan nama file foto kedua kamu di src="" -->
                             <img src="puasa 2.jpeg" alt="Aksi Belanja 2">
                             <div class="photo-caption">Aksi Belanja</div>
                         </div>
@@ -770,19 +754,16 @@
                     <h4>Des 2024 - Jan 2025</h4>
                     <p>Bertanggung jawab penuh mendokumentasikan momen-momen penting pada kegiatan besar Khitanan Massal.</p>
                     
-                    <!-- GANTI grid-template-columns menjadi 1fr 1fr agar membagi jadi 2 kolom -->
                     <div class="card-photos" style="grid-template-columns: 1fr 1fr; gap: 10px;">
                         
                         <!-- FOTO 1 -->
                         <div class="photo-box">
-                            <!-- Masukkan nama file fotomu di src="" -->
                             <img src="khitanan 1.png" alt="Fotografi Khitanan 1">
                             <div class="photo-caption">Momen Khitanan 1</div>
                         </div>
 
                         <!-- FOTO 2 -->
                         <div class="photo-box">
-                            <!-- Masukkan nama file fotomu di src="" -->
                             <img src="khitanan 2.png" alt="Fotografi Khitanan 2">
                             <div class="photo-caption">Momen Khitanan 2</div>
                         </div>
@@ -795,7 +776,6 @@
                     <h4>Des 2024 - Jan 2025</h4>
                     <p>Merancang material visual promosi (poster, twibbon) dan memproduksi konten video untuk kampanye media sosial Satu Amal Indonesia.</p>
                     
-                    <!-- FOTO & TOMBOL BERADA DI TENGAH (max-width & margin auto) -->
                     <div class="card-photos" style="grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
                         
                         <!-- KOLOM 1: Tombol 1 & Video 1 -->
@@ -822,12 +802,10 @@
 
                         <!-- KOLOM 3: Tombol 3 & Video 3 (TAMBAHAN BARU) -->
                         <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                            <!-- Ganti tanda # dengan link video ke-3 Anda -->
                             <a href="https://www.instagram.com/reel/DGnUIdtPdY2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==" target="_blank" class="video-link-btn">
                                 <i class="fa-solid fa-play"></i> Tonton Video 3
                             </a>
                             <div class="photo-box" style="aspect-ratio: 9 / 16; width: 100%;">
-                                <!-- Ganti tw 3.png dengan nama file foto/video ke-3 Anda -->
                                 <img src="tw 3.png" alt="Video 3" style="object-fit: cover;">
                                 <div class="photo-caption">Video 3</div>
                             </div>
@@ -840,7 +818,6 @@
             <!-- AWARDS & CERTIFICATIONS -->
             <h2 class="section-title cursive-text">Awards & Certifications</h2>
             
-            <<!-- Grid diubah menjadi 3 kolom sejajar -->
             <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
                 
                 <!-- 1. Woody Award -->
@@ -849,7 +826,6 @@
                     <h4>Sep 2025 | Ambivers Foundation</h4>
                     <p style="margin-bottom: 10px;">Penghargaan tertinggi atas antusiasme & kontribusi di Ambisquad. (Skills: Leadership, Teamwork, Public Speaking).</p>
                     <div class="card-photos">
-                        <!-- Kotak diatur aspect-ratio 4/3 agar berbentuk landscape sertifikat -->
                         <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
                             <img src="woody.png" alt="Sertifikat Woody">
                             <div class="photo-caption">Sertifikat Woody Award</div>
