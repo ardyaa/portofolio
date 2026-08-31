@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Ardya Pratiwi</title>
+    <!-- Font Cursive untuk judul & Font Nunito untuk teks -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --dark-purple: #3A1A5D;
+            --card-gradient: linear-gradient(135deg, #7B52AB, #5C3D88);
+            --paper-bg: #F9F9F9;
+            --dot-color: #7B52AB;
+            --pink-accent: #F472B6;
+            --text-dark: #2D3748;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nunito', sans-serif; color: var(--text-dark); background-color: var(--paper-bg); overflow-x: hidden; }
+        .cursive-text { font-family: 'Dancing Script', cursive; color: var(--dark-purple); }
+
+        /* --- 1. HERO SECTION --- */
+        .hero-section { display: flex; min-height: 100vh; background: var(--paper-bg); }
+
+        /* Kiri: Frame HP */
+        .hero-left {
+            flex: 0.4; background: var(--dark-purple);
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h100v100H0z" fill="%233A1A5D"/><path d="M10 10q10 20 30 10t40 20M-10 50q20 30 50 10t50 30" stroke="%234a266e" fill="none" stroke-width="2"/></svg>');
+            padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; z-index: 2;
+        }
+        .hero-left h1 { font-size: 3.5rem; color: white; margin-bottom: 30px; letter-spacing: 2px; text-align: center; }
+
+        /* --- TRIK CSS FOTO POP OUT RAPI --- */
+        .phone-container {
+            position: relative;
+            width: 290px;
+            height: 440px;
+            margin-top: 40px;
+        }
+        .phone-frame {
+            background: #fff;
+            border: 4px solid var(--dark-purple);
+            border-radius: 35px;
+            width: 100%; height: 100%;
+            box-shadow: -15px 15px 0px rgba(0,0,0,0.3);
+            outline: 6px solid #D6BCFA;
+            position: absolute; top: 0; left: 0; z-index: 1;
+        }
+        .phone-screen-bg {
+            background: linear-gradient(135deg, #c4b5fd 0%, #fbcfe8 50%, #e9d5ff 100%);
+            position: absolute; top: 10px; left: 10px; right: 10px; bottom: 70px;
+            border-radius: 22px; border: 2px solid var(--dark-purple); z-index: 2;
+        }
+        .image-clipper {
+            position: absolute;
+            top: 12px; left: 12px; right: 12px; bottom: 72px;
+            z-index: 5;
+            clip-path: inset(-150px 0px 0px 0px); 
+        }
+        .pop-out-image {
+            position: absolute;
+            bottom: 0; left: -10%;
+            width: 120%; height: auto;
+            pointer-events: none;
+            filter: drop-shadow(-5px 5px 10px rgba(0,0,0,0.4));
+        }
+
+        .phone-buttons {
+            position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 15px; z-index: 3;
+        }
+        .phone-btn { width: 35px; height: 14px; border: 3px solid var(--dark-purple); border-radius: 10px; background: var(--pink-accent); }
+
+        /* Kanan: Teks & Skills Rinci */
+        .hero-right { flex: 0.6; padding: 60px 80px; display: flex; flex-direction: column; justify-content: center; }
+        .hero-right h2 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-right p { font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; text-align: justify; }
+
+        .skills-container { margin-top: 10px; }
+        .skill-group { margin-bottom: 15px; }
+        .skill-group h4 { font-size: 0.95rem; color: #555; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; font-weight: 800;}
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag { background: white; border: 2px solid var(--dark-purple); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; color: var(--dark-purple); box-shadow: 2px 2px 0px rgba(0,0,0,0.1); }
+        .tag.highlight { background: var(--pink-accent); color: white; border-color: var(--dark-purple); }
+
+        /* --- 2. NOTEBOOK SECTION --- */
+        .notebook-section {
+            background-color: #FFF5F9; background-image: radial-gradient(var(--dot-color) 2px, transparent 3px);
+            background-size: 30px 30px; padding-bottom: 80px; position: relative;
+        }
+        .spiral-bind {
+            height: 40px; width: 100%; background-color: #FDFDFD;
+            background-image: radial-gradient(circle at 20px 20px, #333 8px, transparent 9px), repeating-linear-gradient(90deg, transparent 0, transparent 18px, #ccc 18px, #ccc 22px, transparent 22px, transparent 40px);
+            background-size: 40px 40px; border-bottom: 2px solid #ddd; margin-bottom: 40px; box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+        }
+        .content-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 4.5rem; margin-bottom: 50px; text-shadow: 2px 2px 0px #fff, 4px 4px 0px rgba(0,0,0,0.1); margin-top: 60px;}
+
+        /* --- KARTU EXPERIENCES / EDU --- */
+        .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .purple-card {
+            background: var(--card-gradient); border-radius: 20px; padding: 30px; color: white;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2); position: relative; border: 3px solid #fff;
+            transition: transform 0.2s; cursor: pointer;
+        }
+        .purple-card:hover { transform: translateY(-5px) rotate(-1deg); }
+        .click-badge { position: absolute; top: -15px; right: -15px; background: var(--pink-accent); color: white; font-weight: 800; padding: 8px 15px; border-radius: 20px; border: 2px solid #fff; box-shadow: 2px 2px 0px rgba(0,0,0,0.2); transform: rotate(15deg); animation: pulse 2s infinite; font-size: 0.8rem; z-index: 5;}
+        @keyframes pulse { 0% { transform: rotate(15deg) scale(1); } 50% { transform: rotate(15deg) scale(1.1); } 100% { transform: rotate(15deg) scale(1); } }
+
+        .purple-card h3 { font-size: 1.5rem; font-weight: 900; margin-bottom: 5px; color: #FFF; text-shadow: 1px 1px 0px var(--dark-purple);}
+        .purple-card h4 { font-size: 1.1rem; color: #FBB6CE; margin-bottom: 15px; font-weight: 800; }
+        .purple-card p, .purple-card li { font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px; }
+        .purple-card ul { padding-left: 20px; }
+
+        /* FOTO GALLERY DI DALAM KARTU */
+        .card-photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 20px; }
+        .photo-box { 
+            width: 100%; 
+            aspect-ratio: 4 / 3; /* Ini rahasianya: rasio kotak akan selalu sama dan sejajar! */
+            background: #fff; /* Latar putih agar sisa ruang terlihat rapi */
+            border: 2px solid var(--dark-purple); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            position: relative; 
+        }
+        .photo-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Foto masuk semua tanpa ada yang terpotong */
+            transition: transform 0.3s; 
+        }
+        .photo-box:hover img { transform: scale(1.1); }
+        .photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; font-size: 0.75rem; text-align: center; padding: 5px; font-weight: 700;}
+
+        /* --- KARTU PROJECT GALLERY --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .project-card {
+            background: white;
+            border: 4px solid var(--dark-purple);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 10px 15px 0px rgba(0,0,0,0.2);
+        }
+        .project-img {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Membuat kotak project sama rata */
+            object-fit: contain;
+            border-bottom: 4px solid var(--dark-purple);
+            background: #fff; 
+        }
+        .project-info {
+            padding: 20px;
+        }
+        .project-info h4 {
+            color: var(--dark-purple);
+            font-size: 1.25rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .project-info p {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .project-tag {
+            background: var(--pink-accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 12px;
+            display: inline-block;
+            border: 2px solid var(--dark-purple);
+        }
+
+        /* --- MODAL (POP-UP SAAT DIKLIK) --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 600px; border-radius: 20px;
+            padding: 30px; position: relative; border: 4px solid var(--dark-purple);
+            box-shadow: 10px 10px 0px var(--pink-accent); text-align: center;
+            max-height: 90vh; overflow-y: auto;
+        }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 2rem; color: var(--dark-purple); cursor: pointer; font-weight: 900;}
+        .modal-content h3 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--dark-purple); margin-bottom: 15px;}
+        .modal-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;}
+        .modal-img-grid img { width: 100%; border-radius: 10px; border: 2px solid #ddd; object-fit: cover;}
+
+        @media (max-width: 900px) {
+            .hero-section { flex-direction: column; }
+            .hero-left, .hero-right { flex: 1; padding: 40px 20px; }
+            .card-grid { grid-template-columns: 1fr; }
+        }
+        /* --- TOMBOL VIDEO LINK --- */
+        .video-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pink-accent);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.9rem;
+            border: 2px solid #fff;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .video-link-btn:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================================================== 
+         1. HERO SECTION 
+         ================================================== -->
+    <section class="hero-section">
+        
+        <!-- Sisi Kiri (Ungu Gelap + Frame HP OUT OF BOUNDS) -->
+        <div class="hero-left">
+            <h1 class="cursive-text" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">About Ardya</h1>
+            
+            <div class="phone-container">
+                <div class="phone-frame">
+                    <div class="phone-screen-bg"></div>
+                    <div class="phone-buttons">
+                        <div class="phone-btn" style="border-radius: 50%; width: 15px;"></div>
+                        <div class="phone-btn"></div>
+                        <div class="phone-btn" style="border-radius: 50%; width: 15px;"></div>
+                    </div>
+                </div>
+                
+                <div class="image-clipper">
+                    <!-- GANTI DENGAN NAMA FILE PNG TRANSPARAN ANDA -->
+                    <img src="foto_ar_formal-removebg-preview.png" alt="Ardya Pratiwi" class="pop-out-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <h2>Hello, I'm <br> <span class="cursive-text">Ardya Pratiwi</span></h2>
+            
+            <p>Undergraduate Computer Engineering Student at Politeknik Negeri Sriwijaya | Core Team GDG Polsri | Project Management at Youth Ranger Sumsel | PLN Intern.</p>
+            
+            <div class="skills-container">
+                <h3 class="cursive-text" style="font-size: 2.5rem; margin-bottom: 15px; border-bottom: 2px dashed #ccc; padding-bottom: 5px;">My Skills & Tools</h3>
+                
+                <div class="skill-group">
+                    <h4>Tech & System Development</h4>
+                    <div class="skill-tags">
+                        <span class="tag highlight">System Development</span>
+                        <span class="tag highlight">Front-End & Back-End Web Dev</span>
+                        <span class="tag">Usability Testing & SUS</span>
+                        <span class="tag">Data Verification</span>
+                        <span class="tag highlight">Data Science & AI</span>
+                        <span class="tag">Digital Transactions</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Soft Skills & Leadership</h4>
+                    <div class="skill-tags">
+                        <span class="tag highlight">Leadership & Teamwork</span>
+                        <span class="tag">Public Speaking</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Active Participation</span>
+                        <span class="tag highlight">Emotional Intelligence</span>
+                        <span class="tag">Personal Branding</span>
+                        <span class="tag">Digital Literacy & Mentoring</span>
+                        <span class="tag">Attention to Detail</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <h4>Media, Tools & Others</h4>
+                    <div class="skill-tags">
+                        <span class="tag highlight">Microsoft Excel & Word</span>
+                        <span class="tag">Spreadsheets</span>
+                        <span class="tag highlight">Videography & Photography</span>
+                        <span class="tag">Adobe After Effects</span>
+                        <span class="tag highlight">Blender 3D</span>
+                        <span class="tag">Zoom & Live Streaming Ops</span>
+                        <span class="tag">Public Relations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================== 
+         2. NOTEBOOK SECTION (Edu, Exp, Proj, Vol, Awards)
+         ================================================== -->
+    <section class="notebook-section">
+        <div class="spiral-bind"></div>
+        <div class="content-container">
+            
+            <!-- EDUKASI -->
+            <h2 class="section-title cursive-text">Education</h2>
+            <div class="card-grid">
+                <div class="purple-card">
+                    <h3>Politeknik Negeri Sriwijaya</h3>
+                    <h4>2023 - Sekarang</h4>
+                    <p><b>Sarjana Terapan (D4) - Teknik Komputer</b></p>
+                    <p>Pengembangan sistem, analisis data, AI, front-end & back-end web development.</p>
+                </div>
+                <div class="purple-card">
+                    <h3>SMA Negeri 6 Palembang</h3>
+                    <h4>Sep 2021 - Sep 2022</h4>
+                    <ul>
+                        <li>Wakil Ketua Divisi Data, Informasi & Humas Rohis Ukhuwah 06.</li>
+                        <li>Project Manager & Baazar Sales Team.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PENGALAMAN -->
+            <h2 class="section-title cursive-text">Experiences</h2>
+            <div class="card-grid">
+                
+                <div class="purple-card" style="grid-column: 1 / -1;" onclick="openModal('pln')">
+                    <h3>Transaksi Energi Intern</h3>
+                    <a href="https://drive.google.com/file/d/1kUP0ySMIhxw0HNqQ_I7TZDelO0INHmv8/view?usp=drive_link" target="_blank" onclick="event.stopPropagation()" style="position: absolute; top: 25px; right: 25px; background: var(--pink-accent); color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.2); z-index: 10;">
+                        <i class="fa-solid fa-certificate"></i> Lihat Sertifikat
+                    </a>
+                    <h4>Feb 2026 - Jun 2026 | PT PLN (Persero) UP3 Palembang</h4>
+                    <ul>
+                        <li>System Development: Mengembangkan web-based street lighting tagging system (LPJU).</li>
+                        <li>Menggunakan System Usability Scale (SUS) & Usability Testing.</li>
+                        <li>Data Verification (customer records, meter readings) menggunakan Spreadsheets.</li>
+                        <li>Front-End & Back-End Web Development.</li>
+                    </ul>
+                    
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px 20px; border-radius: 12px; margin: 15px 0 20px 0; border: 1px dashed rgba(255,255,255,0.6); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <h4 style="margin-bottom: 5px; color: #fff; font-size: 1.15rem;"><i class="fa-solid fa-laptop-code"></i> Web-Based LPJU Tagging System</h4>
+                            <p style="font-size: 0.85rem; margin: 0; color: #FDF2F8;">Projek utama pengembangan sistem pemetaan dan pendataan lampu jalan.</p>
+                        </div>
+                        <a href="https://lpjuup3palembang.com/login.php" target="_blank" class="video-link-btn" onclick="event.stopPropagation()">
+                            Lihat Website LPJU <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="card-photos" style="grid-template-columns: repeat(4, 1fr);">
+                        <div class="photo-box" style="aspect-ratio: 9 / 16;"><img src="presentasi.jpeg" alt="PLN 1" style="object-fit: cover;"><div class="photo-caption">Presentasi Project</div></div>
+                        <div class="photo-box" style="aspect-ratio: 9 / 16;"><img src="lapangan.jpeg" alt="PLN 2" style="object-fit: cover;"><div class="photo-caption">Testing Lapangan</div></div>
+                        <div class="photo-box" style="aspect-ratio: 9 / 16;"><img src="verif.jpeg" alt="PLN 3" style="object-fit: cover;"><div class="photo-caption">Verifikasi Data</div></div>
+                        <div class="photo-box" style="aspect-ratio: 9 / 16;"><img src="sertifikat.jpeg" alt="PLN 4" style="object-fit: cover;"><div class="photo-caption">Pemberian Sertifikat</div></div>
+                    </div>
+                </div>
+
+                <div class="purple-card" onclick="openModal('ambivers')">
+                    <h3>Community Development Intern</h3>
+                    <a href="https://drive.google.com/file/d/1gS6HqabGiYy72Ut5Lq_eZNEOsIiT7DqF/view?usp=drive_link" target="_blank" onclick="event.stopPropagation()" style="position: absolute; top: 25px; right: 25px; background: var(--pink-accent); color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.2); z-index: 10;">
+                        <i class="fa-solid fa-certificate"></i> Lihat Report
+                    </a>
+                    <h4>Okt 2025 - Apr 2026 | Ambivers Foundation</h4>
+                    <ul>
+                        <li>Mengoordinasikan peserta dan event online (Zoom Ops & Live Streaming).</li>
+                        <li>Member of Ambisquad: Personal development & mentoring program.</li>
+                        <li>Menjadi pembicara untuk memberikan pengalaman dan dampak dari Ambisquad Batch 1 kepada anggota Ambisquad Batch 2.</li>
+                        <li>Dipercaya beberapa kali menjadi Master of Ceremony (MC) dalam kegiatan kumpul anggota Ambisquad.</li>
+                    </ul>
+
+                    <div style="background: rgba(255,255,255,0.15); padding: 15px; border-radius: 12px; margin: 15px 0; border-left: 4px solid var(--pink-accent);">
+                        <h4 style="margin-bottom: 10px; color: #fff; font-size: 1.05rem;"><i class="fa-solid fa-trophy" style="color: #FCD34D;"></i> Achievement Highlights</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span style="background: var(--pink-accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">🏆 Best Staff (Nov)</span>
+                            <span style="background: var(--dark-purple); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">🌟 Best Division (Des)</span>
+                            <span style="background: var(--pink-accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">🏆 Best Staff (Feb)</span>
+                            <span style="background: var(--pink-accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.1);">🏆 Best Staff (Mar)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-photos" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="photo-box"><img src="ambivers 1.png" alt="Event"><div class="photo-caption">Staff Terbaik</div></div>
+                        <div class="photo-box"><img src="ambivers 2.png" alt="Speaker"><div class="photo-caption">Dashboard Kegiatan</div></div>
+                        <div class="photo-box">
+                            <img src="pembicara ambisquad.jpeg" alt="Pembicara Ambisquad">
+                            <div class="photo-caption">Pembicara Kegiatan Ambisquad</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="purple-card">
+                    <h3>Administrative Assistant</h3>
+                    <h4>Apr 2025 - Present | Family Gas Retail Business</h4>
+                    <ul>
+                        <li>Digital Transactions menggunakan aplikasi MyPertamina.</li>
+                        <li>Mengelola data dan pelaporan finansial menggunakan Microsoft Excel.</li>
+                    </ul>
+                    <div class="card-photos">
+                    <!-- Hanya ada SATU div photo-box di sini -->
+                    <div class="photo-box" style="grid-column: 1 / -1; aspect-ratio: 8 / 3;">
+                        <img src="gas.png" alt="Administrasi">
+                        <div class="photo-caption">Pencatatan Keuangan (Ms. Excel)</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <h2 class="section-title cursive-text">Organizational Experience</h2>
+            <div class="card-grid">
+                
+                <div class="purple-card">
+                    <h3>Technical Team Leader</h3>
+                    <a href="https://drive.google.com/file/d/1r5S3HHO3foupLCpgzssWgP9_vxXmtp-7/view?usp=drive_link" target="_blank" style="position: absolute; top: 25px; right: 25px; background: var(--pink-accent); color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.2); z-index: 10;">
+                        <i class="fa-solid fa-certificate"></i> Lihat Sertifikat
+                    </a>
+                    <h4>Jan 2024 - Aug 2024 | Istighotsah Journey</h4>
+                    <ul>
+                        <li>Coordinated team members to ensure effective collaboration, delegating responsibilities, and monitoring performance.</li>
+                        <li>Managed technical operations during events, specifically <b>Zoom Video Conferencing and Live Streaming Operations</b>.</li>
+                        <li>Oversaw event support activities, contributing to the successful delivery of various online programs.</li>
+                        <li>Strengthened leadership, communication, teamwork, and problem-solving skills.</li>
+                    </ul>
+                    
+                    <!-- TAMBAHAN BARU: FOTO DOKUMEN SERTIFIKAT ISTIGHOTSAH -->
+                    <h4 style="font-size: 1rem; color: #FDF2F8; border-top: 1px dashed rgba(255,255,255,0.3); padding-top: 15px; margin-top: 20px;">Dokumentasi Kegiatan:</h4>
+                    <div class="card-photos" style="grid-template-columns: 1fr;">
+                        <div class="photo-box" style="height: auto; aspect-ratio: 16 / 9;">
+                            <!-- Ganti ketua.png dengan nama file foto sertifikat Istighotsah Anda -->
+                            <img src="istighotsah.jpg" alt="Sertifikat Istighotsah">
+                            <div class="https://drive.google.com/file/d/1r5S3HHO3foupLCpgzssWgP9_vxXmtp-7/view?usp=sharing">Sertifikat Koordinator Divisi</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ==============================================
+                 BAGIAN BARU: MY PROJECTS GALLERY
+                 ============================================== -->
+            <h2 class="section-title cursive-text">My Projects</h2>
+            <div class="project-grid">
+                
+                <!-- Project 10: Motion Graphic -->
+                <!-- Tambahan style flex untuk menyamakan tinggi semua kartu -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <!-- GANTI TANDA # DI DALAM href="" DENGAN LINK PROJECT ANDA -->
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="ss motion.png" alt="Motion Graphic" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Motion Graphic Video</h4>
+                        <!-- flex-grow: 1 membuat teks mengisi ruang kosong agar bagian tag selalu sejajar di bawah -->
+                        <p style="flex-grow: 1;">Membuat video motion graphic yang dinamis dan visual efek menarik menggunakan <b>Adobe After Effects</b>.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">After Effects</span>
+                            <!-- GANTI TANDA # DI DALAM href="" DENGAN LINK PROJECT ANDA -->
+                            <a href="https://drive.google.com/file/d/1yQfcHyByYAf2QEDnD1-bhyUJQy3AdWie/view?usp=sharing" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">
+                                Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 11: 3D City Model -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="kota.png" alt="3D City" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>3D City Modeling</h4>
+                        <p style="flex-grow: 1;">Merancang dan membangun model arsitektur serta tata letak kota 3D yang detail menggunakan <b>Blender</b>.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Blender 3D</span>
+                            <a href="https://drive.google.com/file/d/1CLHO-Rupu_5oO7qAgcEZTrBwGHANKg9J/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 1: Film Tugas Kelas -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="syuting kelas.png" alt="Film Kelas" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Short Film (Tugas Kelas)</h4>
+                        <p style="flex-grow: 1;">Proyek pembuatan film pendek sebagai tugas kelas, terlibat dalam produksi.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Videography</span>
+                            <a href="https://youtu.be/jLt3-eEay-A?si=ZU2R9VlxlAQ-XZk4" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Video Editing Film -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="film.png" alt="Editing Film" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Film Pendek</h4>
+                        <p style="flex-grow: 1;">Berperan sebagai Video Editor untuk menyatukan *footage*, mengatur *color grading*, dan audio.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Video Editing</span>
+                            <a href="https://youtu.be/vvh-t3a_ouo?si=zZBorNTq6ZIM4x67" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Game Development -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="game.png" alt="Game" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Game Development</h4>
+                        <p style="flex-grow: 1;">Mengembangkan *mini-game* interaktif menggunakan logika pemrograman dasar hingga desain level.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Game Dev</span>
+                            <a href="https://ardya-pratiwi-putri.itch.io/" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Poster Design -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="poter pizza.png" alt="3D Mobil" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Poster Design</h4>
+                        <p style="flex-grow: 1;"> Membuat desain poster kreatif untuk menyampaikan informasi secara visual dengan konsep yang menarik dan komunikatif.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">3D Modeling</span>
+                            <a href="https://drive.google.com/file/d/1_2TrEf-yw055EyJnr9fhNdJ2KQDwljwz/view?usp=drive_link/" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: AR Experience -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="AR mobil.png" alt="VR" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Augmented Reality (AR)</h4>
+                        <p style="flex-grow: 1;">Mengembangkan pengalaman Augmented Reality yang memungkinkan objek digital ditampilkan dan berinteraksi dengan lingkungan nyata.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">AR Technology</span>
+                            <a href="hasil AR mobil.png" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Aplikasi Buku -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="buku.png" alt="Aplikasi Buku" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Aplikasi Buku</h4>
+                        <p style="flex-grow: 1;">Mengembangkan aplikasi *mobile* perpustakaan/buku untuk memudahkan akses literasi digital pengguna.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Mobile App Dev</span>
+                            <a href="#" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7: Website Penjualan -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="wordpress.png" alt="E-Commerce" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Website Penjualan</h4>
+                        <p style="flex-grow: 1;">Membangun platform *e-commerce* dengan menggunakan wordpress untuk melihat tampilan katalog produk dan transaksi.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Web Dev</span>
+                            <a href="https://drive.google.com/drive/folders/1ftHRZ0F1l89yMiIu-g1cGlaZdcJ5jLpv?usp=sharing" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Poster Rice Bowl -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="foto-produk-ricebowl.png" alt="Poster" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Desain Poster "Rice Bowl"</h4>
+                        <p style="flex-grow: 1;">Proyek desain grafis untuk kebutuhan promosi produk kuliner agar terlihat menarik dan *appetizing*.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Graphic Design</span>
+                            <a href="https://drive.google.com/file/d/1TcAJFoN0YG6Wmmb1df9FwmowYF9vJP2_/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: Video Promosi -->
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="video bowlplay.png" alt="Video Promosi" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Video Promosi Produk "Ricebowl Bowlplay"</h4>
+                        <p style="flex-grow: 1;">Memproduksi, merekam, dan mengedit video komersial/promosi yang dinamis untuk kebutuhan *marketing*.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Content Creation</span>
+                            <a href="https://youtu.be/PMEpsnQKn5k?si=4BShUsXzcQMsios8" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="hp.png" alt="Samsung 3D Ad" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Samsung Mobile 3D Ad</h4>
+                        <p style="flex-grow: 1;">Membuat video iklan (Ad) 3D produk Samsung Mobile yang realistis menggunakan <b>Blender</b>.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Blender 3D</span>
+                            <a href="https://youtu.be/tMGzOvh0cyY?si=0kigfS1yCbWIZbYi" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="berita.png" alt="Pembawa Berita 3D" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Pembawa Berita 3D</h4>
+                        <p style="flex-grow: 1;">Merancang dan menganimasikan karakter pembawa berita (news anchor) dalam bentuk 3D.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">3D Animation</span>
+                            <a href="https://drive.google.com/file/d/1RWFN4IBfJwSW60Pq3Q07CZSG6rnsBm6p/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="iklan komersil.png" alt="Iklan Komersil" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Video Iklan Komersil</h4>
+                        <p style="flex-grow: 1;">Produksi dan penyuntingan video iklan komersial yang menarik untuk mempromosikan produk secara efektif.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Video Production</span>
+                            <a href="https://drive.google.com/file/d/1O12UNN0l-TJ-HHSKPR98ifYbedc-Y3CL/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="iklan nonkomersil.png" alt="Iklan Non-Komersil" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Iklan Layanan Masyarakat</h4>
+                        <p style="flex-grow: 1;">Pembuatan video kampanye sosial atau iklan layanan masyarakat (non-komersil) untuk meningkatkan kesadaran publik.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Public Service</span>
+                            <a href="https://drive.google.com/file/d/1ntiJQBQp-9-4yeFvh0oUNEYcUNu8QyYp/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <a href="#" target="_blank" style="display: block;">
+                        <img src="iklan audio.png" alt="Produksi Audio" class="project-img">
+                    </a>
+                    <div class="project-info" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h4>Iklan Audio</h4>
+                        <p style="flex-grow: 1;">Perekaman, penyuntingan, dan *mixing* audio untuk kebutuhan *voice over*, efek suara, atau produksi *broadcasting*.</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                            <span class="project-tag">Audio Editing</span>
+                            <a href="https://drive.google.com/file/d/149FNMtlD9CxHCc0pC8g538of2RdqO1Rj/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--pink-accent); font-weight: 800; font-size: 0.85rem;">Lihat Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- VOLUNTEERING -->
+            <h2 class="section-title cursive-text">Volunteering @ Satu Amal</h2>
+            <div class="card-grid">
+                
+                <!-- 1. Tim Semangat Langit (Aksi Belanja/Lapangan) -->
+                <div class="purple-card">
+                    <h3>Tim Semangat Langit</h3>
+                    <a href="https://drive.google.com/file/d/1QI-z4VyiEuU4nkUDsvyJzVnCOAvDIYNc/view?usp=drive_link" target="_blank" style="position: absolute; top: 25px; right: 25px; background: var(--pink-accent); color: white; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; text-decoration: none; border: 1px solid #fff; box-shadow: 2px 2px 0 rgba(0,0,0,0.2); z-index: 10;">
+                        <i class="fa-solid fa-certificate"></i> Lihat Sertifikat
+                    </a>
+                    <h4>Jan 2025 - Apr 2025</h4>
+                    <p>Berkontribusi menjangkau 22.000+ penerima manfaat dan mendukung 83% target donasi melalui aksi turun lapangan.</p>
+                    
+                    <!-- Diubah menjadi 1fr 1fr agar membagi jadi 2 foto bersebelahan -->
+                    <div class="card-photos" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+                        
+                        <!-- FOTO 1 -->
+                        <div class="photo-box">
+                            <img src="puasa 1.jpeg" alt="Aksi Belanja 1">
+                            <div class="photo-caption">Aksi Belanja</div>
+                        </div>
+
+                        <!-- FOTO 2 -->
+                        <div class="photo-box">
+                            <!-- Masukkan nama file foto kedua kamu di src="" -->
+                            <img src="puasa 2.jpeg" alt="Aksi Belanja 2">
+                            <div class="photo-caption">Aksi Belanja</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 2. Photographer (Khitanan Massal) -->
+                <div class="purple-card">
+                    <h3>Photographer</h3>
+                    <h4>Des 2024 - Jan 2025</h4>
+                    <p>Bertanggung jawab penuh mendokumentasikan momen-momen penting pada kegiatan besar Khitanan Massal.</p>
+                    
+                    <!-- GANTI grid-template-columns menjadi 1fr 1fr agar membagi jadi 2 kolom -->
+                    <div class="card-photos" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+                        
+                        <!-- FOTO 1 -->
+                        <div class="photo-box">
+                            <!-- Masukkan nama file fotomu di src="" -->
+                            <img src="khitanan 1.png" alt="Fotografi Khitanan 1">
+                            <div class="photo-caption">Momen Khitanan 1</div>
+                        </div>
+
+                        <!-- FOTO 2 -->
+                        <div class="photo-box">
+                            <!-- Masukkan nama file fotomu di src="" -->
+                            <img src="khitanan 2.png" alt="Fotografi Khitanan 2">
+                            <div class="photo-caption">Momen Khitanan 2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Social Media Specialist (Desain & Video) -->
+                <div class="purple-card" style="grid-column: 1 / -1;">
+                    <h3>Social Media Specialist</h3>
+                    <h4>Des 2024 - Jan 2025</h4>
+                    <p>Merancang material visual promosi (poster, twibbon) dan memproduksi konten video untuk kampanye media sosial Satu Amal Indonesia.</p>
+                    
+                    <!-- FOTO & TOMBOL BERADA DI TENGAH (max-width & margin auto) -->
+                    <div class="card-photos" style="grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; max-width: 900px; margin-left: auto; margin-right: auto;">
+                        
+                        <!-- KOLOM 1: Tombol 1 & Video 1 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                            <a href="https://www.instagram.com/reel/DKUHa8SP5MX/?igsi=MWswcDF0amp2ajkxdw==" target="_blank" class="video-link-btn">
+                                <i class="fa-solid fa-play"></i> Tonton Video 1
+                            </a>
+                            <div class="photo-box" style="aspect-ratio: 9 / 16; width: 100%;">
+                                <img src="tw 1.png" alt="Video 1" style="object-fit: cover;">
+                                <div class="photo-caption">Video 1</div>
+                            </div>
+                        </div>
+
+                        <!-- KOLOM 2: Tombol 2 & Video 2 -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                            <a href="https://www.instagram.com/reel/DLKcbI_Pp1x/?igsi=MTY3djdobzlvcWFyaQ==" target="_blank" class="video-link-btn">
+                                <i class="fa-solid fa-play"></i> Tonton Video 2
+                            </a>
+                            <div class="photo-box" style="aspect-ratio: 9 / 16; width: 100%;">
+                                <img src="tw 2.png" alt="Video 2" style="object-fit: cover;">
+                                <div class="photo-caption">Video 2</div>
+                            </div>
+                        </div>
+
+                        <!-- KOLOM 3: Tombol 3 & Video 3 (TAMBAHAN BARU) -->
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                            <!-- Ganti tanda # dengan link video ke-3 Anda -->
+                            <a href="https://www.instagram.com/reel/DGnUIdtPdY2/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==" target="_blank" class="video-link-btn">
+                                <i class="fa-solid fa-play"></i> Tonton Video 3
+                            </a>
+                            <div class="photo-box" style="aspect-ratio: 9 / 16; width: 100%;">
+                                <!-- Ganti tw 3.png dengan nama file foto/video ke-3 Anda -->
+                                <img src="tw 3.png" alt="Video 3" style="object-fit: cover;">
+                                <div class="photo-caption">Video 3</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- AWARDS & CERTIFICATIONS -->
+            <h2 class="section-title cursive-text">Awards & Certifications</h2>
+            
+            <<!-- Grid diubah menjadi 3 kolom sejajar -->
+            <div class="card-grid" style="grid-template-columns: repeat(3, 1fr);">
+                
+                <!-- 1. Woody Award -->
+                <div class="purple-card">
+                    <h3>Woody Award: Best Participant 1</h3>
+                    <h4>Sep 2025 | Ambivers Foundation</h4>
+                    <p style="margin-bottom: 10px;">Penghargaan tertinggi atas antusiasme & kontribusi di Ambisquad. (Skills: Leadership, Teamwork, Public Speaking).</p>
+                    <div class="card-photos">
+                        <!-- Kotak diatur aspect-ratio 4/3 agar berbentuk landscape sertifikat -->
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="woody.png" alt="Sertifikat Woody">
+                            <div class="photo-caption">Sertifikat Woody Award</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Best Performing Staff (BARU) -->
+                <div class="purple-card">
+                    <h3>Best Performing Staff</h3>
+                    <h4>2025 - 2026 | Ambivers Foundation</h4>
+                    <p style="margin-bottom: 10px;">Meraih predikat staf terbaik (Nov, Jan, Feb, Mar) atas konsistensi kinerja dalam *Community Development*.</p>
+                    <div class="card-photos">
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="best staff.png" alt="Sertifikat Best Staff">
+                            <div class="photo-caption">Sertifikat Best Staff</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Bootcamp AI -->
+                <div class="purple-card">
+                    <h3>Bootcamp Artificial Intelligence</h3>
+                    <h4>Sep 2025 | Intelligo ID</h4>
+                    <p style="margin-bottom: 10px;">Penyelesaian program intensif mengenai fondasi *Data Science* dan penerapan *Artificial Intelligence* (AI).</p>
+                    <div class="card-photos">
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="ai.png" alt="Sertifikat AI">
+                            <div class="photo-caption">Sertifikat AI Bootcamp</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Business Development (BARU) -->
+                <div class="purple-card">
+                    <h3>Business Development Fast Track</h3>
+                    <h4>Feb 2025 | Rocket Digital Academy</h4>
+                    <p style="margin-bottom: 10px;">Pelatihan intensif pengembangan bisnis, strategi ekspansi, dan manajemen proyek digital.</p>
+                    <div class="card-photos">
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="business.jpg" alt="Sertifikat BusDev">
+                            <div class="photo-caption">Sertifikat Business Dev</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Coursera Excel -->
+                <div class="purple-card">
+                    <h3>Introduction to Microsoft Excel</h3>
+                    <h4>Okt 2024 | Coursera</h4>
+                    <p style="margin-bottom: 10px;">Sertifikasi global penyelesaian kursus manajemen data, formula, dan *spreadsheets* menggunakan Ms. Excel.</p>
+                    <div class="card-photos">
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="excel.png" alt="Sertifikat Excel">
+                            <div class="photo-caption">Sertifikat Coursera</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Personal Dev Program -->
+                <div class="purple-card">
+                    <h3>Personal Dev Program (Grade A)</h3>
+                    <h4>Sep 2025 | Ambivers Foundation</h4>
+                    <p style="margin-bottom: 10px;">Kelulusan dengan nilai sangat memuaskan (Skills: Emotional Intelligence, Personal Branding, Digital Literacy).</p>
+                    <div class="card-photos">
+                        <div class="photo-box" style="grid-column: 1/-1; height: auto; aspect-ratio: 4 / 3;">
+                            <img src="grade a.png" alt="Sertifikat Grade A">
+                            <div class="photo-caption">Sertifikat Personal Dev</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+    
+    <script>
+        function openModal(id) {
+            document.getElementById('modal-' + id).style.display = 'flex';
+        }
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
+</body>
+</html>
